@@ -31,8 +31,8 @@ const Header = () => {
           <span className="text-3xl font-black text-outline tracking-widest">{PROJECT_NAME}</span>
         </div>
         <div className="hidden lg:flex gap-6 text-xl">
-          <a href="#about" className="text-outline hover:text-red-500 transition-colors">History</a>
-          <a href="#scripture" className="text-outline hover:text-red-500 transition-colors">Scripture</a>
+          <a href="#about" className="text-outline hover:text-red-500 transition-colors">Archive</a>
+          <a href="#fragments" className="text-outline hover:text-red-500 transition-colors">Fragments</a>
           <a href="#paint" className="text-outline hover:text-red-500 transition-colors">Paint</a>
           <a href="#generate" className="text-outline hover:text-red-500 transition-colors">Meme Gen</a>
         </div>
@@ -63,7 +63,7 @@ const Hero = () => {
             USD1 PAIR ON BONK.FUN
           </div>
           <h1 className="text-6xl md:text-8xl xl:text-9xl text-outline leading-none transform -rotate-2">
-            THE YELLOW<br/>SCRIPTURE
+            PROJECT<br/>/YARL/
           </h1>
           <p className="text-2xl md:text-3xl text-outline-sm leading-relaxed transform rotate-1">
             History denied him. The internet forgot him. <br className="hidden md:block"/>
@@ -97,51 +97,71 @@ const Hero = () => {
 const About = () => {
   return (
     <section id="about" className="py-24 px-4 bg-white border-y-4 border-black text-black">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-16">
-          <span className="bg-black text-yellow-400 px-4 py-1 text-xl sketch-border rotate-2 inline-block mb-4">ARCHIVE: 2014-2015</span>
-          <h2 className="text-5xl md:text-7xl underline decoration-wavy decoration-red-500">THE FORGOTTEN PROJECT</h2>
-          <p className="mt-4 text-xl font-bold">RESEARCHING AND PRESERVING THE HISTORY OF /YARL/</p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="sketch-border bg-[#fef200] p-6 md:p-8 transform rotate-1 hover:rotate-0 transition-transform">
-            <h3 className="text-3xl font-bold mb-4 border-b-2 border-black pb-2">HISTORICAL CONTEXT</h3>
-            <p className="text-xl mb-6 font-sans font-bold">
-              /r9k/ (Robot9000) circa 2014.
-            </p>
-            <p className="text-lg leading-relaxed mb-4">
-              Yarl was an attempted meme character introduced by an anonymous user who hoped to create "the next Pepe."
-            </p>
-            <p className="text-lg leading-relaxed">
-              The goal? To replace the "oversaturated" Pepe market.
-              <br/>
-              The result? <span className="bg-red-600 text-white px-1 font-bold">TOTAL REJECTION.</span>
+          <span className="bg-black text-yellow-400 px-4 py-1 text-xl sketch-border -rotate-1 inline-block mb-4">ARCHIVE: /R9K/ 2014-2015</span>
+          <h2 className="text-4xl md:text-7xl underline decoration-wavy decoration-red-500 uppercase">
+            The Forgotten Meme
+            <br />
+            Preservation Project
+          </h2>
+          <div className="mt-8 sketch-border bg-gray-100 p-6 max-w-4xl mx-auto rotate-1">
+            <p className="text-xl md:text-2xl font-bold">
+              "This board is dedicated to researching and preserving the history of Yarl, a failed 4chan meme experiment from 2014-2015."
             </p>
           </div>
+        </div>
 
-          <div className="sketch-border bg-black text-white p-6 md:p-8 transform -rotate-1 hover:rotate-0 transition-transform">
-            <h3 className="text-3xl font-bold mb-4 border-b-2 border-white pb-2 text-yellow-400">WHY IT FAILED</h3>
-            <ul className="space-y-4 text-lg list-disc list-inside">
-              <li>Lack of "versatility" (FALSE)</li>
-              <li>"Poor artwork" (IT'S ABSTRACT ART)</li>
-              <li>Community resistance (THEY WERE AFRAID)</li>
-            </ul>
-            <div className="mt-8 p-4 border-2 border-dashed border-white/30 rounded">
-              <p className="text-xl italic text-gray-300">
-                "mfw these newfags try to dethrone the obvious king."
-              </p>
-              <p className="text-right text-sm mt-2 text-gray-500">- Anonymous 4chan User, 2014</p>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Left Column: Historical Context & Research Goals */}
+          <div className="space-y-12">
+            <div className="sketch-border bg-[#fef200] p-8 transform rotate-1">
+              <h3 className="text-3xl font-bold mb-6 border-b-2 border-black pb-2">HISTORICAL CONTEXT</h3>
+              <ul className="space-y-4 text-xl list-none">
+                <li className="flex items-start">
+                  <span className="mr-2 text-2xl">•</span> Originally posted on /r9k/ (Robot9000) board circa 2014-2015
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-2xl">•</span> Created as an attempt to replace the "oversaturated" Pepe market
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-2xl">•</span> Failed due to lack of versatility, poor artwork, and community resistance
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-2 text-2xl">•</span> Only survived in one archived Reddit post: <span className="italic">"Robot shares new meme: Yarl"</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="sketch-border bg-white p-8 transform -rotate-1">
+              <h3 className="text-3xl font-bold mb-6 border-b-2 border-black pb-2 text-red-600">RESEARCH GOALS</h3>
+              <ol className="space-y-4 text-xl list-decimal list-inside font-bold">
+                <li>Document the original /r9k/ thread content</li>
+                <li>Analyze why forced memes fail in 4chan culture</li>
+                <li>Preserve internet history's forgotten corners</li>
+                <li>Study memetic evolution and community dynamics</li>
+              </ol>
             </div>
           </div>
-        </div>
 
-        <div className="mt-12 text-center max-w-3xl mx-auto">
-          <p className="text-2xl md:text-3xl leading-relaxed">
-            Only one archived Reddit post survived. Until now.
-            <br/>
-            <span className="bg-yellow-400 px-2 box-decoration-clone">We study memetic evolution and the forgotten corners of internet history.</span>
-          </p>
+          {/* Right Column: What was Yarl */}
+          <div className="sketch-border bg-black text-white p-8 transform rotate-1 h-full flex flex-col justify-center">
+            <h3 className="text-4xl font-bold mb-6 border-b-2 border-white pb-2 text-yellow-400">WHAT WAS YARL?</h3>
+            <p className="text-xl leading-loose mb-8">
+              Yarl was an attempted meme character introduced by an anonymous /r9k/ user who hoped to create <span className="bg-yellow-400 text-black px-1">"the next Pepe."</span>
+            </p>
+            <p className="text-xl leading-loose mb-8">
+              The community rejected it as a forced meme, noting it lacked the emotional range (sad, happy, smug variants) that made Pepe successful.
+            </p>
+            
+            <div className="mt-auto p-6 border-2 border-dashed border-white/50 bg-white/10 rounded">
+               <p className="text-sm text-gray-400 mb-2 uppercase tracking-widest">Archived Comment #4921</p>
+               <p className="text-2xl italic font-serif">
+                "mfw these newfags try to dethrone the obvious king."
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -150,23 +170,21 @@ const About = () => {
 
 const Scripture = () => {
   return (
-    <section id="scripture" className="py-24 px-4 bg-yellow-500 border-y-4 border-black">
+    <section id="fragments" className="py-24 px-4 bg-yellow-500 border-y-4 border-black">
       <div className="max-w-4xl mx-auto space-y-12 text-center">
-        <h2 className="text-6xl text-outline mb-12 underline decoration-wavy decoration-red-500">THE YELLOW SCRIPTURE</h2>
+        <h2 className="text-6xl text-outline mb-12 underline decoration-wavy decoration-white">RECOVERED FRAGMENTS</h2>
         
         <div className="grid gap-8 text-2xl md:text-3xl leading-relaxed">
           <p className="bg-white text-black p-6 sketch-border rotate-1">
-            "The cult of anonymous yarlers stand together strong, but every disciple unique in its own way."
+            "We are not driven by greed or fame, but by a quiet conviction that virtue can still exist online."
           </p>
           <p className="bg-black text-white p-6 sketch-border -rotate-1">
             "YARL teaches that morality is our compass, not our chain."
           </p>
-          <p className="bg-white text-black p-6 sketch-border rotate-1">
-            "We are not driven by greed or fame, but by a quiet conviction that virtue can still exist online."
-          </p>
-          <p className="bg-red-600 text-white p-6 sketch-border -rotate-2 text-4xl">
-            "We do not worship the meme; we live the message."
-          </p>
+          <div className="bg-white text-black p-6 sketch-border rotate-1">
+            <span className="block text-sm font-bold mb-2 uppercase text-red-600">Observation Log:</span>
+             "The cult of anonymous yarlers stand together strong, but every disciple unique in its own way."
+          </div>
         </div>
       </div>
     </section>

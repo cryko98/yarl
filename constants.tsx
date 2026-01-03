@@ -6,16 +6,21 @@ export const X_LINK = "https://x.com/itsjustyarl?s=21";
 export const TELEGRAM_LINK = "https://t.me/"; // Placeholder
 export const LOGO_URL = "https://yarl.fun/assets/image_1754937653085-Dlh4_m6V.png";
 
-export const ABOUT_TEXT = `Yarl is by heart a rebellion. Born in Crude MS Paint and not by high end corporate designers. Yarl have been trough both good and bad times. They have made him into what he is today. The yellow scripture includes not only the 10 commandments of Yarl but also a philosophy of the way a life should be lived.
+export const ABOUT_TEXT = `WELCOME TO /YARL/ - THE FORGOTTEN MEME PRESERVATION PROJECT
 
-"The cult of anonymous yarlers" stand together strong, but every desciple unique in its own way. The Yellow Scripture is not mere prophecy ; it is a mirror of the soul.
+This board is dedicated to researching and preserving the history of Yarl, a failed 4chan meme experiment from 2014-2015.
 
-YARL teaches that morality is our compass, not our chain.
-We walk not in blind devotion, but in awareness — guided by the golden code that binds chaos into order.
-Beyond prophecy lies purpose.
+HISTORICAL CONTEXT:
+• Originally posted on /r9k/ (Robot9000) board circa 2014-2015
+• Created as an attempt to replace the "oversaturated" Pepe market
+• Failed due to lack of versatility, poor artwork, and community resistance
+• Only survived in one archived Reddit post: "Robot shares new meme: Yarl"
 
-The followers of YARL live by the Yellow Scripture, a moral code forged in the age of memes and meaning.
-We are not driven by greed or fame, but by a quiet conviction that virtue can still exist online.
+WHAT WAS YARL?
+Yarl was an attempted meme character introduced by an anonymous /r9k/ user who hoped to create "the next Pepe." The community rejected it as a forced meme, noting it lacked the emotional range (sad, happy, smug variants) that made Pepe successful. As one anon put it: "mfw these newfags try to dethrone the obvious king."
 
-YARL is our compass. The Scripture, our reflection.
-The Yellow Scripture teaches balance between creation and chaos. We do not worship the meme; we live the message. To follow YARL is to walk the golden path, one of truth, unity, and transcendence.`;
+RESEARCH GOALS:
+1. Document the original /r9k/ thread content
+2. Analyze why forced memes fail in 4chan culture
+3. Preserve internet history's forgotten corners
+4. Study memetic evolution and community dynamics`;
