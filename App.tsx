@@ -62,8 +62,8 @@ const Hero = () => {
           <div className="inline-block bg-black text-white px-4 py-2 text-xl rotate-2 sketch-border">
             USD1 PAIR ON BONK.FUN
           </div>
-          <h1 className="text-6xl md:text-8xl xl:text-9xl text-outline leading-none transform -rotate-2">
-            PROJECT<br/>/YARL/
+          <h1 className="text-5xl md:text-7xl xl:text-8xl text-outline leading-none transform -rotate-2">
+            YARL |<br/>The Forgotten Meme
           </h1>
           <p className="text-2xl md:text-3xl text-outline-sm leading-relaxed transform rotate-1">
             History denied him. The internet forgot him. <br className="hidden md:block"/>
@@ -535,7 +535,7 @@ const App = () => {
            </a>
         </div>
         <h2 className="text-6xl mb-4">YARL</h2>
-        <p className="text-xl">THE YELLOW SCRIPTURE IS FOREVER.</p>
+        <p className="text-xl">THE FORGOTTEN MEME LIVES ON.</p>
         <p className="mt-8 text-sm text-gray-500 font-sans">© 2025 Yarl Cult. Not financial advice. Just vibes.</p>
       </footer>
     </div>
