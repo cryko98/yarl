@@ -53,42 +53,56 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-24 px-6 min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="pt-32 pb-24 px-6 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
        {/* Background doodles */}
-      <div className="absolute bottom-10 right-10 text-black/10 text-9xl -rotate-12 select-none">PAINT</div>
+      <div className="absolute top-20 left-10 text-black/5 text-9xl rotate-12 select-none pointer-events-none">YARL</div>
+      <div className="absolute bottom-10 right-10 text-black/5 text-9xl -rotate-12 select-none pointer-events-none">MEME</div>
 
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-20 lg:gap-40 items-center relative z-10">
-        <div className="space-y-8 text-center lg:text-left relative z-20">
-          <div className="inline-block bg-black text-white px-4 py-2 text-xl rotate-2 sketch-border">
+      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-12 lg:gap-20">
+        
+        {/* Top: Badge & Title */}
+        <div className="text-center space-y-8 z-20">
+          <div className="inline-block bg-black text-white px-6 py-2 text-xl -rotate-2 sketch-border">
             USD1 PAIR ON BONK.FUN
           </div>
-          <h1 className="text-5xl md:text-7xl xl:text-8xl text-outline leading-none transform -rotate-2">
+          <h1 className="text-5xl md:text-7xl xl:text-9xl text-outline leading-none">
             YARL |<br/>The Forgotten Meme
           </h1>
-          <p className="text-2xl md:text-3xl text-outline-sm leading-relaxed transform rotate-1">
-            History denied him. The internet forgot him. <br className="hidden md:block"/>
-            But Yarl has finally found his home on USD1. <br/>
-            <span className="text-white font-bold bg-black px-2 mt-2 inline-block transform -rotate-1">THE SLEEPING GIANT AWAKENS.</span>
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 w-full">
-            <div className="sketch-border bg-white text-black p-4 flex flex-col items-center sm:items-start w-full">
-               <span className="text-sm font-bold mb-1">CA (COPY ME):</span>
-               <code className="text-lg md:text-2xl break-all select-all font-sans font-bold w-full text-center lg:text-left leading-tight">{CONTRACT_ADDRESS}</code>
-            </div>
-          </div>
         </div>
 
-        <div className="relative z-10">
-          <img 
-            src={LOGO_URL} 
-            alt="Yarl" 
-            className="w-full max-w-md mx-auto sketch-border bg-white rotate-3 hover:-rotate-3 transition-transform duration-500 p-2"
-          />
-          <div className="absolute -bottom-10 -right-10 bg-red-600 text-white p-4 sketch-border text-2xl rotate-12 hidden md:block">
-            MS PAINT 4EVER
-          </div>
+        {/* Bottom: Grid with Image and Text */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+           {/* Image Side */}
+           <div className="relative flex justify-center lg:justify-end order-1">
+             <div className="relative w-full max-w-md transform transition-transform hover:scale-105 duration-300">
+                <img 
+                  src={LOGO_URL} 
+                  alt="Yarl" 
+                  className="w-full sketch-border bg-white -rotate-2 p-3"
+                />
+                <div className="absolute -bottom-8 -right-8 bg-red-600 text-white p-3 sketch-border text-2xl rotate-6 hidden md:block">
+                  MS PAINT 4EVER
+                </div>
+             </div>
+           </div>
+
+           {/* Text Side */}
+           <div className="space-y-8 text-center lg:text-left order-2">
+             <p className="text-2xl md:text-4xl text-outline-sm leading-relaxed">
+                History denied him. The internet forgot him. <br className="hidden md:block"/>
+                But Yarl has finally found his home on USD1. <br/>
+                <span className="text-white font-bold bg-black px-2 mt-4 inline-block -rotate-1 text-xl md:text-3xl">THE SLEEPING GIANT AWAKENS.</span>
+             </p>
+             
+             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+               <div className="sketch-border bg-white text-black p-6 flex flex-col items-center lg:items-start w-full lg:w-auto">
+                  <span className="text-sm font-bold mb-2 text-gray-500">CONTRACT ADDRESS (CA):</span>
+                  <code className="text-lg md:text-2xl break-all select-all font-sans font-bold leading-tight hover:text-red-600 transition-colors cursor-pointer">{CONTRACT_ADDRESS}</code>
+               </div>
+             </div>
+           </div>
         </div>
+
       </div>
     </section>
   );
@@ -515,6 +529,7 @@ const App = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <MemeGallery />
       <About />
       <MemeGallery />
       <Scripture />
