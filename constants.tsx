@@ -2,7 +2,7 @@
 export const PROJECT_NAME = "Yarl";
 export const TICKER = "$yarl";
 export const CONTRACT_ADDRESS = "4SC9u3dZuawTEyq6EvWnS1NWWrQ1pVpjHGrVoAA2bonk";
-export const X_LINK = "https://x.com/"; // Placeholder as not provided, keeping generic or empty
+export const X_LINK = "https://x.com/itsjustyarl?s=21";
 export const TELEGRAM_LINK = "https://t.me/"; // Placeholder
 export const LOGO_URL = "https://yarl.fun/assets/image_1754937653085-Dlh4_m6V.png";
 

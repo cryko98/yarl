@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { GoogleGenAI } from "@google/genai";
-import { PROJECT_NAME, TICKER, CONTRACT_ADDRESS, LOGO_URL, ABOUT_TEXT } from './constants';
+import { PROJECT_NAME, TICKER, CONTRACT_ADDRESS, LOGO_URL, ABOUT_TEXT, X_LINK } from './constants';
 
 const TICKER_IMAGES = [
   "https://pbs.twimg.com/media/Gy3hHHfWsAAsVBo?format=jpg&name=medium",
@@ -25,20 +25,27 @@ const TICKER_IMAGES = [
 const Header = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 p-4">
-      <div className="max-w-7xl mx-auto sketch-border bg-[#FACC15] px-4 py-3 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto sketch-border bg-[#FACC15] px-4 py-3 flex flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-3">
           <img src={LOGO_URL} className="w-12 h-12 border-2 border-black sketch-button" alt="logo" />
           <span className="text-3xl font-black text-outline tracking-widest">{PROJECT_NAME}</span>
         </div>
-        <div className="hidden md:flex gap-6 text-xl">
+        <div className="hidden lg:flex gap-6 text-xl">
           <a href="#about" className="text-outline hover:text-red-500 transition-colors">History</a>
           <a href="#scripture" className="text-outline hover:text-red-500 transition-colors">Scripture</a>
           <a href="#paint" className="text-outline hover:text-red-500 transition-colors">Paint</a>
           <a href="#generate" className="text-outline hover:text-red-500 transition-colors">Meme Gen</a>
         </div>
-        <a href="#buy" className="bg-red-600 text-white border-2 border-black px-4 py-2 text-lg sketch-button">
-          GET {TICKER}
-        </a>
+        <div className="flex items-center gap-2">
+          <a href={X_LINK} target="_blank" rel="noopener noreferrer" className="bg-black text-white p-2 border-2 border-black sketch-button hover:bg-gray-800 transition-colors">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a href="#buy" className="bg-red-600 text-white border-2 border-black px-4 py-2 text-lg sketch-button">
+            GET {TICKER}
+          </a>
+        </div>
       </div>
     </nav>
   );
@@ -46,38 +53,39 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-16 px-4 min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="pt-32 pb-24 px-6 min-h-screen flex items-center justify-center relative overflow-hidden">
        {/* Background doodles */}
       <div className="absolute bottom-10 right-10 text-black/10 text-9xl -rotate-12 select-none">PAINT</div>
 
-      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        <div className="space-y-8 text-center lg:text-left">
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-20 lg:gap-40 items-center relative z-10">
+        <div className="space-y-8 text-center lg:text-left relative z-20">
           <div className="inline-block bg-black text-white px-4 py-2 text-xl rotate-2 sketch-border">
             USD1 PAIR ON BONK.FUN
           </div>
-          <h1 className="text-7xl md:text-9xl text-outline leading-none transform -rotate-2">
+          <h1 className="text-6xl md:text-8xl xl:text-9xl text-outline leading-none transform -rotate-2">
             THE YELLOW<br/>SCRIPTURE
           </h1>
           <p className="text-2xl md:text-3xl text-outline-sm leading-relaxed transform rotate-1">
-            Born in Crude MS Paint. Not by corporate designers. <br/>
-            YARL is the truth.
+            History denied him. The internet forgot him. <br className="hidden md:block"/>
+            But Yarl has finally found his home on USD1. <br/>
+            <span className="text-white font-bold bg-black px-2 mt-2 inline-block transform -rotate-1">THE SLEEPING GIANT AWAKENS.</span>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-            <div className="sketch-border bg-white text-black p-4 flex flex-col items-center sm:items-start">
-               <span className="text-sm">CA (COPY ME):</span>
-               <code className="text-lg md:text-xl break-all select-all font-sans font-bold">{CONTRACT_ADDRESS}</code>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 w-full">
+            <div className="sketch-border bg-white text-black p-4 flex flex-col items-center sm:items-start w-full">
+               <span className="text-sm font-bold mb-1">CA (COPY ME):</span>
+               <code className="text-lg md:text-2xl break-all select-all font-sans font-bold w-full text-center lg:text-left leading-tight">{CONTRACT_ADDRESS}</code>
             </div>
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative z-10">
           <img 
             src={LOGO_URL} 
             alt="Yarl" 
             className="w-full max-w-md mx-auto sketch-border bg-white rotate-3 hover:-rotate-3 transition-transform duration-500 p-2"
           />
-          <div className="absolute -bottom-10 -right-10 bg-red-600 text-white p-4 sketch-border text-2xl rotate-12">
+          <div className="absolute -bottom-10 -right-10 bg-red-600 text-white p-4 sketch-border text-2xl rotate-12 hidden md:block">
             MS PAINT 4EVER
           </div>
         </div>
@@ -464,7 +472,7 @@ const BuySection = () => {
         <div className="bg-white p-8 sketch-border rotate-1 hover:rotate-0 transition-transform">
           <h3 className="text-4xl mb-4 bg-yellow-400 inline-block px-2 border border-black">STEP 3</h3>
           <p className="text-2xl mb-4">Go to <a href="https://bonk.fun" target="_blank" className="underline decoration-wavy decoration-red-500">BONK.FUN</a></p>
-          <p className="text-lg">Paste the CA:<br/><span className="font-bold text-sm select-all">{CONTRACT_ADDRESS}</span></p>
+          <p className="text-lg w-full">Paste the CA:<br/><span className="font-bold text-xs md:text-sm break-all select-all block bg-gray-100 p-1 border border-black">{CONTRACT_ADDRESS}</span></p>
         </div>
       </div>
     </section>
@@ -500,6 +508,13 @@ const App = () => {
       <footer className="bg-black text-yellow-400 py-12 text-center border-t-4 border-white">
         <div className="flex justify-center gap-4 mb-8">
            <img src={LOGO_URL} className="w-20 h-20 rounded-full border-2 border-white" />
+        </div>
+        <div className="flex justify-center gap-4 mb-6">
+           <a href={X_LINK} target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-400">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+           </a>
         </div>
         <h2 className="text-6xl mb-4">YARL</h2>
         <p className="text-xl">THE YELLOW SCRIPTURE IS FOREVER.</p>
