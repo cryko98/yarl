@@ -4,7 +4,7 @@ export const TICKER = "$luna";
 export const CONTRACT_ADDRESS = "AX8c9bZXXVrww9RS6whpKjegaT1uiwbz9X12fdqFpump";
 export const X_LINK = "https://x.com/i/communities/2012712663206498560";
 export const TELEGRAM_LINK = "#"; // Placeholder as none was provided, can be updated later
-export const LOGO_URL = "https://pbs.twimg.com/media/G-6kps0WQAAbnNS?format=png&name=small";
+export const LOGO_URL = "https://wkkeyyrknmnynlcefugq.supabase.co/storage/v1/object/public/neww/logo%20-%202026-01-18T200001.985.png";
 
 export const ABOUT_TEXT = `MOST POPULAR CAT ON X
 
