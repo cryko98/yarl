@@ -236,11 +236,16 @@ const LunaWardrobe = () => {
       if (base64Ref) parts.push({ inlineData: { data: base64Ref, mimeType: 'image/png' } });
       
       parts.push({ text: `
-      REFERENCE IMAGE PROVIDED.
-      TASK: You are a photo editor. Your goal is to strictly preserve the cat in the reference image and only overlay clothing.
-      INSTRUCTION: Keep the cat's face, fur color (white), eye color, and body position exactly 100% identical to the reference image. DO NOT redraw the cat in a different style. DO NOT change the cat's breed.
-      ACTION: Add the following clothing/accessories to the cat: ${prompt}.
-      OUTPUT: A new image where the cat looks exactly like the source, but is wearing the items.
+      You are an expert AI photo editor. 
+      INPUT: A reference image of a white cat named Luna.
+      TASK: Generate a new image that preserves the reference cat EXACTLY as is, but digitally overlay the following outfit on her: ${prompt}.
+      
+      CRITICAL INSTRUCTIONS:
+      1. COPY THE CAT: The cat's face, eyes, ears, whiskers, pose, and fur texture must be IDENTIAL to the reference image. Do not change her breed or expression.
+      2. PRESERVE BACKGROUND: Keep the background style consistent with the reference.
+      3. OUTFIT INTEGRATION: The clothing must look like it is naturally worn by the cat in this specific pose.
+      4. STYLE: Maintain the visual style of the original image (e.g. photo vs illustration). 
+      5. OUTPUT: A single image containing the original cat wearing the requested item.
       ` });
 
       const response = await ai.models.generateContent({
