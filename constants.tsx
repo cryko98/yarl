@@ -1,26 +1,15 @@
 
-export const PROJECT_NAME = "Yarl";
-export const TICKER = "$yarl";
-export const CONTRACT_ADDRESS = "4SC9u3dZuawTEyq6EvWnS1NWWrQ1pVpjHGrVoAA2bonk";
-export const X_LINK = "https://x.com/itsjustyarl?s=21";
-export const TELEGRAM_LINK = "https://t.me/"; // Placeholder
-export const LOGO_URL = "https://yarl.fun/assets/image_1754937653085-Dlh4_m6V.png";
+export const PROJECT_NAME = "Luna";
+export const TICKER = "$luna";
+export const CONTRACT_ADDRESS = "AX8c9bZXXVrww9RS6whpKjegaT1uiwbz9X12fdqFpump";
+export const X_LINK = "https://x.com/i/communities/2012712663206498560";
+export const TELEGRAM_LINK = "#"; // Placeholder as none was provided, can be updated later
+export const LOGO_URL = "https://pbs.twimg.com/media/G-6kps0WQAAbnNS?format=png&name=small";
 
-export const ABOUT_TEXT = `WELCOME TO /YARL/ - THE FORGOTTEN MEME PRESERVATION PROJECT
+export const ABOUT_TEXT = `MOST POPULAR CAT ON X
 
-This board is dedicated to researching and preserving the history of Yarl, a failed 4chan meme experiment from 2014-2015.
+The most popular cat name on X (formerly Twitter) — and in general right now — appears to be Luna.
 
-HISTORICAL CONTEXT:
-• Originally posted on /r9k/ (Robot9000) board circa 2014-2015
-• Created as an attempt to replace the "oversaturated" Pepe market
-• Failed due to lack of versatility, poor artwork, and community resistance
-• Only survived in one archived Reddit post: "Robot shares new meme: Yarl"
+From recent pet industry data (like reports from TrustedHousesitters, Rover.com, and others covering 2025 into 2026), Luna consistently ranks as the #1 cat name across the US and beyond.
 
-WHAT WAS YARL?
-Yarl was an attempted meme character introduced by an anonymous /r9k/ user who hoped to create "the next Pepe." The community rejected it as a forced meme, noting it lacked the emotional range (sad, happy, smug variants) that made Pepe successful. As one anon put it: "mfw these newfags try to dethrone the obvious king."
-
-RESEARCH GOALS:
-1. Document the original /r9k/ thread content
-2. Analyze why forced memes fail in 4chan culture
-3. Preserve internet history's forgotten corners
-4. Study memetic evolution and community dynamics`;
+It’s been holding the top spot for female cats (and often overall) for several years, inspired by its dreamy, moon-related vibe (Latin for "moon"), plus influences like Sailor Moon's black cat Luna.`;
