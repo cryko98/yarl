@@ -414,6 +414,8 @@ const Chart = () => {
         <iframe 
           src={`https://dexscreener.com/solana/${CONTRACT_ADDRESS}?embed=1&theme=dark`}
           className="w-full h-full border-0"
+          loading="lazy"
+          title="DexScreener Chart"
         />
       </div>
     </section>
