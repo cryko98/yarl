@@ -203,49 +203,93 @@ const LunaWardrobe = () => {
   const [prompt, setPrompt] = useState("");
   const [generatedImg, setGeneratedImg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const cachedRefImage = useRef<string | null>(null);
 
   const getBase64FromUrl = async (url: string): Promise<string | null> => {
     if (cachedRefImage.current) return cachedRefImage.current;
-    try {
-      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-      const response = await fetch(proxyUrl);
-      const blob = await response.blob();
-      const base64 = await new Promise<string>((resolve) => {
+
+    const blobToBase64 = (blob: Blob): Promise<string> => {
+      return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onloadend = () => resolve((reader.result as string).split(',')[1]);
+        reader.onloadend = () => {
+          if (typeof reader.result === 'string') {
+            resolve(reader.result.split(',')[1]);
+          } else {
+            reject(new Error("Failed to convert blob to base64"));
+          }
+        };
+        reader.onerror = reject;
         reader.readAsDataURL(blob);
       });
-      cachedRefImage.current = base64;
-      return base64;
-    } catch (e) { return null; }
+    };
+
+    // Strategy 1: Direct Fetch (Best for Supabase Public Buckets if CORS allowed)
+    try {
+      console.log("Fetching logo directly...");
+      const response = await fetch(url, { method: 'GET', mode: 'cors' });
+      if (response.ok) {
+        const blob = await response.blob();
+        const base64 = await blobToBase64(blob);
+        cachedRefImage.current = base64;
+        return base64;
+      }
+    } catch (e) {
+      console.warn("Direct fetch failed, attempting proxy...", e);
+    }
+
+    // Strategy 2: Reliable Proxy (Fall back if Vercel deployment has strict CORS issues)
+    try {
+      console.log("Fetching logo via proxy...");
+      // Using corsproxy.io as a reliable fallback
+      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+      const response = await fetch(proxyUrl);
+      if (response.ok) {
+        const blob = await response.blob();
+        const base64 = await blobToBase64(blob);
+        cachedRefImage.current = base64;
+        return base64;
+      }
+    } catch (e) {
+      console.error("Proxy fetch failed", e);
+    }
+
+    return null;
   };
 
   const generate = async () => {
     if (!prompt || loading) return;
     const apiKey = process.env.API_KEY || (window as any).process?.env?.API_KEY;
-    if (!apiKey) return;
+    if (!apiKey) {
+        setError("API Key not found.");
+        return;
+    }
 
     setLoading(true);
     setGeneratedImg(null);
+    setError(null);
 
     try {
       const ai = new GoogleGenAI({ apiKey });
       const base64Ref = await getBase64FromUrl(LOGO_URL);
+      
+      if (!base64Ref) {
+        throw new Error("Could not load the reference image of Luna. Please check your connection.");
+      }
+
       const parts: any[] = [];
-      if (base64Ref) parts.push({ inlineData: { data: base64Ref, mimeType: 'image/png' } });
+      parts.push({ inlineData: { data: base64Ref, mimeType: 'image/png' } });
       
       parts.push({ text: `
-      You are an expert AI photo editor. 
-      INPUT: A reference image of a white cat named Luna.
-      TASK: Generate a new image that preserves the reference cat EXACTLY as is, but digitally overlay the following outfit on her: ${prompt}.
+      Role: Expert Image Editor.
+      Input: You have been provided with a specific reference image of a cat named Luna.
+      Command: Edit the image to make Luna appear as if she is ${prompt}.
       
-      CRITICAL INSTRUCTIONS:
-      1. COPY THE CAT: The cat's face, eyes, ears, whiskers, pose, and fur texture must be IDENTIAL to the reference image. Do not change her breed or expression.
-      2. PRESERVE BACKGROUND: Keep the background style consistent with the reference.
-      3. OUTFIT INTEGRATION: The clothing must look like it is naturally worn by the cat in this specific pose.
-      4. STYLE: Maintain the visual style of the original image (e.g. photo vs illustration). 
-      5. OUTPUT: A single image containing the original cat wearing the requested item.
+      STRICT CONSTRAINTS (Zero Tolerance for Hallucination):
+      1. PRESERVE IDENTITY: You must use the EXACT cat from the reference image. Do not generate a new cat. Do not change the cat's face, eye color, fur pattern, or body shape.
+      2. PRESERVE STYLE: If the reference is a photo, keep it photorealistic. If it's a drawing, keep it a drawing.
+      3. COMPOSITION: Keep the cat in the same pose if possible, just overlay the clothing/accessories naturally.
+      4. OUTPUT: Return only the edited image.
       ` });
 
       const response = await ai.models.generateContent({
@@ -261,8 +305,9 @@ const LunaWardrobe = () => {
           }
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+      setError(err.message || "Something went wrong generating the outfit.");
     } finally {
       setLoading(false);
     }
@@ -287,18 +332,24 @@ const LunaWardrobe = () => {
               placeholder="E.g. wearing a pink tutu and ballet shoes..."
               className="w-full h-40 border-2 border-[#D2B48C] p-4 text-xl font-sans rounded-lg focus:border-[#8B4513] outline-none"
             />
+            {error && (
+                <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+                    <p className="font-bold">Error</p>
+                    <p>{error}</p>
+                </div>
+            )}
             <div className="flex gap-4">
               <button 
                 onClick={handleRandom}
                 disabled={loading}
-                className="w-1/3 bg-[#D2B48C] text-white text-xl py-4 sketch-button border-2 border-[#4A3728] rounded-lg hover:bg-[#b08d55]"
+                className="w-1/3 bg-[#D2B48C] text-white text-xl py-4 sketch-button border-2 border-[#4A3728] rounded-lg hover:bg-[#b08d55] disabled:opacity-50"
               >
                 RANDOM 🎲
               </button>
               <button 
                 onClick={generate} 
                 disabled={loading}
-                className="w-2/3 bg-[#8B4513] text-white text-2xl py-4 sketch-button border-2 border-[#4A3728] rounded-lg hover:bg-[#6b350e]"
+                className="w-2/3 bg-[#8B4513] text-white text-2xl py-4 sketch-button border-2 border-[#4A3728] rounded-lg hover:bg-[#6b350e] disabled:opacity-50"
               >
                 {loading ? "STYLING..." : "DRESS UP LUNA"}
               </button>
