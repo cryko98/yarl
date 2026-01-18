@@ -59,9 +59,6 @@ const Hero = () => {
         
         {/* Top: Badge & Title */}
         <div className="text-center space-y-8 z-20">
-          <div className="inline-block bg-white text-[#8B4513] px-6 py-2 text-xl -rotate-2 sketch-border font-bold">
-            COMMUNITY TAKEOVER
-          </div>
           <h1 className="text-6xl md:text-8xl xl:text-9xl text-outline leading-none text-[#8B4513]">
             LUNA |<br/>Queen of Solana
           </h1>
@@ -393,7 +390,7 @@ const App = () => {
         </div>
         <h2 className="text-6xl mb-4 text-white">LUNA</h2>
         <p className="text-xl">THE QUEEN OF SOLANA.</p>
-        <p className="mt-8 text-sm text-gray-500 font-sans">© 2025 Luna Cult.</p>
+        <p className="mt-8 text-sm text-gray-500 font-sans">© 2026 Luna Cult.</p>
       </footer>
     </div>
   );
